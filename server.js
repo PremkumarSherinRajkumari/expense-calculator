@@ -5,12 +5,15 @@ const services = require('./services');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+const cors = require('cors'); 
 
 app.use(cookieParser());
 app.use(express.static('./dist'));
 app.use(express.json());
-
+app.use(cors({
+  origin: 'http://expense-calculator.s3-website.us-east-2.amazonaws.com',
+  credentials: true,
+}));
 
 
 // Sessions
